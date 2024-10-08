@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'env/env.dart';
-import 'ui/pages/pages.dart';
+import 'presentation/navigator/navigator.dart';
 import 'ui/styles/styles.dart';
 
 void main() => Env();
@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Experian Challenge',
       theme: lightTheme,
-      home: const SplashPage(),
+      getPages: PagesRoutes.routes,
+      initialRoute: PagesRoutes.initial,
     );
   }
 }
