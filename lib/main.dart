@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'env/env.dart';
+import 'ui/styles/styles.dart';
 
 void main() => Env();
 
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       title: 'Experian Challenge',
-      home: Scaffold(
+      theme: lightTheme,
+      home: const Scaffold(
         body: Center(
           child: Text("Experian Challenge"),
         ),
