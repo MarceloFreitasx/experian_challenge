@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../components/components.dart';
 import '../../styles/styles.dart';
 
 class SplashPage extends StatelessWidget {
@@ -7,13 +8,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(
-        child: Image.asset(
-          AppAssets.logo,
-          width: 98,
-        ),
+        child: LogoImage(),
       ),
     );
   }
