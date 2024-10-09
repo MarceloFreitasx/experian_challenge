@@ -27,6 +27,14 @@ void main() {
       expect(model.description, json["description"]);
     });
 
+    test('toEntity should convert an CharacterModel to an CharacterEntity', () {
+      final entity = model.toEntity();
+
+      expect(entity.id, model.id);
+      expect(entity.name, model.name);
+      expect(entity.description, model.description);
+    });
+
     test('fromJson should handle empty values', () {
       final json = {
         "id": -1,

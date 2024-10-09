@@ -21,6 +21,13 @@ void main() {
       expect(model.extension, json["extension"]);
     });
 
+    test('toEntity should convert an ThumbnailModel to an ThumbnailEntity', () {
+      final entity = model.toEntity();
+
+      expect(entity.path, model.path);
+      expect(entity.extension, model.extension);
+    });
+
     test('fromJson should handle empty values', () {
       final json = {
         "path": "",

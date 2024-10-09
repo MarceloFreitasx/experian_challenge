@@ -1,3 +1,4 @@
+import '../../domain/entities/entities.dart';
 import 'models.dart';
 
 class CharacterModel {
@@ -18,5 +19,12 @@ class CharacterModel {
         name: json['name'],
         description: json['description'],
         thumbnail: json['thumbnail'] != null ? ThumbnailModel.fromJson(json['thumbnail']) : null,
+      );
+
+  CharacterEntity toEntity() => CharacterEntity(
+        id: id,
+        name: name,
+        description: description,
+        thumbnail: thumbnail?.toEntity(),
       );
 }
