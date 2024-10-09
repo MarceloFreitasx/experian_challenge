@@ -1,4 +1,5 @@
 import '../../../domain/entities/character.dart';
+import '../../../domain/params/params.dart';
 import '../../../domain/repositories/repositories.dart';
 import '../../helpers/helpers.dart';
 import '../../models/models.dart';
@@ -26,20 +27,19 @@ class RemoteCharacterDataSource implements CharactersRepository {
   }
 
   @override
-  Future<List<CharacterEntity>> getCharactersList({int? limit, int? offset}) async {
+  Future<List<CharacterEntity>> getCharactersList(OptionsParams options) async {
     try {
       final request = await httpClient.request(
         method: HttpMethod.get,
         url: "/characters",
-        data: {
-          "limit": limit,
-          "offset": offset,
-        },
+        data: options.toMap(),
       );
 
       final result = request.data as Map<String, dynamic>;
-      final data = result["data"] as List<dynamic>;
-      return data.map((element) => CharacterModel.fromJson(element).toEntity()).toList();
+      final data = result["data"] as Map<String, dynamic>;
+      return (data["results"] as List<dynamic>)
+          .map((element) => CharacterModel.fromJson(element).toEntity())
+          .toList();
     } catch (_) {
       rethrow;
     }
