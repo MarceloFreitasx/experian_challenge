@@ -3,4 +3,6 @@ class ThumbnailEntity {
   String? extension;
 
   ThumbnailEntity({this.path, this.extension});
+
+  String get url => '$path.$extension';
 }
