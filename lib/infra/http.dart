@@ -35,6 +35,11 @@ class HttpService implements HttpClient {
       'Content-Type': 'application/json',
     });
 
+    // Additional query parameters
+    httpClient.options.queryParameters.addAll({
+      "apikey": Env.to!.apiKey,
+    });
+
     Response response = await handleMethod(
       url: url,
       data: data,
