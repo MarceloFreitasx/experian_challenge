@@ -15,6 +15,7 @@ dependencies:
   #C
   crypto: ^3.0.5
   cupertino_icons: ^1.0.8
+  cached_network_image: ^3.4.1
   #D
   dio: ^5.7.0
   #F
@@ -31,6 +32,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   #M
   mocktail: ^1.0.4
+  #N
+  network_image_mock: ^2.1.1
   #T
   test: ^1.25.7
 
