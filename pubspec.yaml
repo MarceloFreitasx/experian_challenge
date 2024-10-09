@@ -13,6 +13,7 @@ environment:
 # Dependencies specify other packages that your package needs in order to work.
 dependencies:
   #C
+  crypto: ^3.0.5
   cupertino_icons: ^1.0.8
   #D
   dio: ^5.7.0

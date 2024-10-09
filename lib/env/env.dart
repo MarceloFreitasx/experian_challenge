@@ -7,6 +7,7 @@ class Env {
     to = this;
     baseUrl = const String.fromEnvironment("baseUrl");
     apiKey = const String.fromEnvironment("apiKey");
+    privateKey = const String.fromEnvironment("privateKey");
 
     main();
   }
@@ -14,6 +15,7 @@ class Env {
   static Env? to;
   late String baseUrl;
   late String apiKey;
+  late String privateKey;
 
   Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();

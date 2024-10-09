@@ -4,6 +4,7 @@ import '../data/helpers/helpers.dart';
 import '../data/models/models.dart';
 import '../data/services/services.dart';
 import '../env/env.dart';
+import 'infra.dart';
 
 class HttpService implements HttpClient {
   HttpService() {
@@ -36,8 +37,11 @@ class HttpService implements HttpClient {
     });
 
     // Additional query parameters
+    final timestamp = DateTime.now().toUtc().millisecondsSinceEpoch.toString();
     httpClient.options.queryParameters.addAll({
       "apikey": Env.to!.apiKey,
+      "ts": timestamp,
+      "hash": Crypto.toMD5(timestamp + Env.to!.privateKey + Env.to!.apiKey),
     });
 
     Response response = await handleMethod(
