@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'di/di.dart';
 import 'env/env.dart';
 import 'presentation/navigator/navigator.dart';
 import 'ui/styles/styles.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       getPages: PagesRoutes.routes,
       initialRoute: PagesRoutes.initial,
+      initialBinding: AppBindings(),
     );
   }
 }
