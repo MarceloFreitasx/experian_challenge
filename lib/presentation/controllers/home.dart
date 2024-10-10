@@ -7,6 +7,7 @@ import '../../domain/params/options.dart';
 import '../../domain/usecases/usecases.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
+import '../navigator/routes.dart';
 
 class HomeControllerImpl extends GetxController with LoadingManager implements HomeController {
   HomeControllerImpl(this.getCharactersListUseCase);
@@ -32,5 +33,10 @@ class HomeControllerImpl extends GetxController with LoadingManager implements H
     } on Exception catch (e) {
       log(e.toString());
     }
+  }
+
+  @override
+  void onTapCharacter(CharacterEntity item) {
+    Get.toNamed(AppRoutes.details, arguments: item.id);
   }
 }

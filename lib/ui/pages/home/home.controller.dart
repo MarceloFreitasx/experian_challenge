@@ -3,4 +3,6 @@ import '../../../domain/mixins/mixins.dart';
 
 abstract class HomeController with LoadingMixin {
   List<CharacterEntity> get characters;
+
+  void onTapCharacter(CharacterEntity item);
 }
