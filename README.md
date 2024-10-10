@@ -40,8 +40,9 @@ Follow these steps to set up the project:
 1. Install [Flutter](https://flutter.dev/docs/get-started/install) if you haven't already.
 2. Ensure you have **Flutter 3.24.3** installed.
 3. Clone this repository and navigate to the project root.
-4. Run `flutter pub get` to install dependencies.
-5. Use the following command to run the app with the correct environment configuration:
+4. Place `google-services.json` in `android/app/`
+5. Run `flutter pub get` to install dependencies.
+6. Use the following command to run the app with the correct environment configuration:
 
    ```bash
    flutter run --dart-define-from-file=lib/env/.env
