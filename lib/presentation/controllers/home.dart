@@ -18,17 +18,22 @@ class HomeControllerImpl extends GetxController
   final GetCharactersListUseCase getCharactersListUseCase;
 
   final _characters = <CharacterEntity>[].obs;
+  final _featuredCharacters = <CharacterEntity>[].obs;
   final _options = OptionsParams();
 
   @override
   List<CharacterEntity> get characters => _characters;
 
   @override
+  List<CharacterEntity> get featuredCharacters => _featuredCharacters;
+
+  @override
   TextEditingController searchController = TextEditingController();
 
   @override
-  void onInit() {
-    getCharactersList();
+  void onInit() async {
+    await getCharactersList();
+    _featuredCharacters.assignAll(characters);
     super.onInit();
   }
 
@@ -58,13 +63,13 @@ class HomeControllerImpl extends GetxController
   void onChangedSearch(String searchTerm) {
     _options.nameStartsWith = searchTerm;
     debouncerRun(() async {
-      await onSearch();
+      await getCharactersList();
     });
   }
 
   @override
   Future<void> onSearch() async {
-    getCharactersList();
+    await getCharactersList();
   }
 
   @override

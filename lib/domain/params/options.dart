@@ -24,5 +24,5 @@ class OptionsParams {
         "limit": limit,
         "offset": offset,
         "orderBy": orderBy,
-      }..removeWhere((key, value) => value == null);
+      }..removeWhere((key, value) => value == null || value == "");
 }

@@ -28,7 +28,7 @@ class FeatureCharactersList extends GetView<HomeController> {
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   itemBuilder: (context, index) {
-                    final item = controller.characters[index];
+                    final item = controller.featuredCharacters[index];
                     return CharacterCard(
                       title: item.name ?? '',
                       image: item.thumbnail?.url ?? '',
@@ -37,7 +37,7 @@ class FeatureCharactersList extends GetView<HomeController> {
                     );
                   },
                   separatorBuilder: (context, index) => const SizedBox(width: 16),
-                  itemCount: controller.characters.length,
+                  itemCount: controller.featuredCharacters.length,
                 ),
               ),
             )),

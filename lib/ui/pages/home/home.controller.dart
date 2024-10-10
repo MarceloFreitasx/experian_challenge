@@ -4,6 +4,7 @@ import '../../../domain/entities/entities.dart';
 import '../../../domain/mixins/mixins.dart';
 
 abstract class HomeController with LoadingMixin, DebouncerMixin, PaginationMixin {
+  List<CharacterEntity> get featuredCharacters;
   List<CharacterEntity> get characters;
   TextEditingController get searchController;
 
