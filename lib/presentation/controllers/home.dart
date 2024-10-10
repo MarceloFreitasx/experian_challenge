@@ -13,9 +13,13 @@ import '../navigator/routes.dart';
 class HomeControllerImpl extends GetxController
     with LoadingManager, DebouncerManager, PaginationManager
     implements HomeController {
-  HomeControllerImpl(this.getCharactersListUseCase);
+  HomeControllerImpl(
+    this.getCharactersListUseCase,
+    this.sendEventUseCase,
+  );
 
   final GetCharactersListUseCase getCharactersListUseCase;
+  final SendEventUseCase sendEventUseCase;
 
   final _characters = <CharacterEntity>[].obs;
   final _featuredCharacters = <CharacterEntity>[].obs;
@@ -56,6 +60,7 @@ class HomeControllerImpl extends GetxController
 
   @override
   void onTapCharacter(CharacterEntity item) {
+    sendEventUseCase.sendOnDetailsTapEvent(item);
     Get.toNamed(AppRoutes.details, arguments: item);
   }
 
@@ -63,6 +68,7 @@ class HomeControllerImpl extends GetxController
   void onChangedSearch(String searchTerm) {
     _options.nameStartsWith = searchTerm;
     debouncerRun(() async {
+      sendEventUseCase.sendSearchEvent(searchTerm);
       await getCharactersList();
     });
   }

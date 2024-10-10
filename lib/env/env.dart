@@ -19,11 +19,6 @@ class Env {
 
   Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await initServices();
     runApp(const MyApp());
-  }
-
-  initServices() async {
-    await Future.wait([]);
   }
 }
