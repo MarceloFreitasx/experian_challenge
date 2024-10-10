@@ -32,6 +32,7 @@ migrate_working_dir/
 /build/
 *.lock
 .env
+google-services.json
 
 # Symbolication related
 app.*.symbols
