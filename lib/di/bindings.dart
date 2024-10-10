@@ -32,5 +32,9 @@ class AppBindings extends Bindings {
       () => HomeControllerImpl(Get.find<GetCharactersListUseCase>()),
       fenix: true,
     );
+    Get.lazyPut<DetailsController>(
+      () => DetailsControllerImpl(),
+      fenix: true,
+    );
   }
 }

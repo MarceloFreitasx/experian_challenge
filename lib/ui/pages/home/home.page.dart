@@ -30,6 +30,7 @@ class HomePage extends GetView<HomeController> {
                     return CharacterCard(
                       title: item.name ?? '',
                       image: item.thumbnail?.url ?? '',
+                      heroTag: item.id.toString(),
                       onTap: () => controller.onTapCharacter(item),
                     );
                   },

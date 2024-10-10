@@ -37,6 +37,6 @@ class HomeControllerImpl extends GetxController with LoadingManager implements H
 
   @override
   void onTapCharacter(CharacterEntity item) {
-    Get.toNamed(AppRoutes.details, arguments: item.id);
+    Get.toNamed(AppRoutes.details, arguments: item);
   }
 }
