@@ -71,4 +71,8 @@ You can run unit and integration tests using the following commands:
 - `dio: ^5.7.0`
   - Facilitated making HTTP requests to the Marvel API and handling responses. Its features, such as interceptors and error handling, were instrumental in ensuring reliable data fetching and error management.
 - `get: ^4.6.6`
-  - Chosen as the primary state management solution due to its simplicity, performance, and my familiarity with the library. Get offered a streamlined approach to managing application state, navigation, and dependency injection, leading to a more maintainable and scalable codebase.
+  Chosen as the primary state management solution due to its simplicity, performance, and my familiarity with the library. Get offered a streamlined approach to managing application state, navigation, and dependency injection, leading to a more maintainable and scalable codebase.
+
+##
+
+> _Firebase Analytics is a valuable tool for gathering user insights. Although native iOS integration was not feasible for this iteration due to hardware constraints, it remains a high priority for future development. We plan to revisit this feature in subsequent releases._
