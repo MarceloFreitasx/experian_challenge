@@ -25,6 +25,8 @@ class CharacterCard extends StatelessWidget {
         tag: heroTag ?? image,
         child: BackgroundNetworkImage(
           imageUrl: image,
+          width: 180,
+          height: 180,
           borderRadius: BorderRadius.circular(15),
           alignment: Alignment.bottomCenter,
           fit: BoxFit.cover,

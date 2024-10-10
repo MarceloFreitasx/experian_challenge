@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../domain/entities/entities.dart';
@@ -9,15 +10,21 @@ import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
 import '../navigator/routes.dart';
 
-class HomeControllerImpl extends GetxController with LoadingManager implements HomeController {
+class HomeControllerImpl extends GetxController
+    with LoadingManager, DebouncerManager, PaginationManager
+    implements HomeController {
   HomeControllerImpl(this.getCharactersListUseCase);
 
   final GetCharactersListUseCase getCharactersListUseCase;
 
   final _characters = <CharacterEntity>[].obs;
+  final _options = OptionsParams();
 
   @override
   List<CharacterEntity> get characters => _characters;
+
+  @override
+  TextEditingController searchController = TextEditingController();
 
   @override
   void onInit() {
@@ -25,10 +32,17 @@ class HomeControllerImpl extends GetxController with LoadingManager implements H
     super.onInit();
   }
 
-  Future<void> getCharactersList() async {
+  Future<void> getCharactersList({bool loadMore = false}) async {
+    if (!loadMore) _options.resetPages();
+
     try {
       setLoadingStarted();
-      _characters.assignAll(await getCharactersListUseCase.execute(OptionsParams()));
+      final characters = await getCharactersListUseCase.execute(_options);
+      if (loadMore) {
+        _characters.addAll(characters);
+      } else {
+        _characters.assignAll(characters);
+      }
       setLoadingCompleted();
     } on Exception catch (e) {
       log(e.toString());
@@ -38,5 +52,26 @@ class HomeControllerImpl extends GetxController with LoadingManager implements H
   @override
   void onTapCharacter(CharacterEntity item) {
     Get.toNamed(AppRoutes.details, arguments: item);
+  }
+
+  @override
+  void onChangedSearch(String searchTerm) {
+    _options.nameStartsWith = searchTerm;
+    debouncerRun(() async {
+      await onSearch();
+    });
+  }
+
+  @override
+  Future<void> onSearch() async {
+    getCharactersList();
+  }
+
+  @override
+  void loadMore() {
+    if (isLoading) return;
+
+    _options.nextPage();
+    getCharactersList(loadMore: true);
   }
 }
