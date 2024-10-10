@@ -22,4 +22,11 @@ class AppTextStyle {
     fontSize: 15,
     fontWeight: FontWeight.w700,
   );
+
+  /// Small Italic - 13 - Light
+  static const TextStyle smallItalicLight = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w300,
+    fontStyle: FontStyle.italic,
+  );
 }
