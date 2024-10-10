@@ -6,7 +6,7 @@ import 'navigator.dart';
 class PagesRoutes {
   PagesRoutes._();
 
-  static const String initial = AppRoutes.home;
+  static const String initial = AppRoutes.splash;
 
   static final routes = [
     GetPage(name: AppRoutes.splash, page: () => const SplashPage()),

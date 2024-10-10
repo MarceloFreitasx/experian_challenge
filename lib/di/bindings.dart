@@ -38,6 +38,10 @@ class AppBindings extends Bindings {
     );
 
     //? Controllers
+    Get.lazyPut<SplashController>(
+      () => SplashControllerImpl(),
+      fenix: true,
+    );
     Get.lazyPut<HomeController>(
       () => HomeControllerImpl(
         Get.find<GetCharactersListUseCase>(),
